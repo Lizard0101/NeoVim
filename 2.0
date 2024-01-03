@@ -1,0 +1,73 @@
+set clipboard=unnamedplus
+syntax on
+syntax enable
+set mouse=a
+set noerrorbells
+set sw=2
+set expandtab
+set smartindent
+set number 
+set relativenumber
+set rnu
+set nowritebackup
+set noswapfile
+set nobackup
+set nowritebackup
+set incsearch
+set encoding=utf-8
+set cursorline
+set colorcolumn=120
+
+highlight ColorColumn ctermbg=0 guibg=lightgrey
+
+call plug#begin('~/.local/share/nvim/plugged')
+
+"Themes 
+Plug 'catppuccin/nvim', { 'as': 'catppuccin' }
+
+"Navegación
+Plug 'christoomey/vim-tmux-navigator'
+Plug 'nvim-tree/nvim-web-devicons' " optional
+Plug 'ryanoasis/vim-devicons' "Icons without colours
+Plug 'vim-airline/vim-airline'
+Plug 'vim-airline/vim-airline-themes'
+Plug 'junegunn/fzf'
+
+
+"Explorador de archivos
+Plug 'nvim-tree/nvim-tree.lua'
+Plug 'antosha417/nvim-lsp-file-operations'
+Plug 'echasnovski/mini.base16'
+
+"Git integration
+Plug 'tpope/vim-fugitive'
+
+call plug#end()
+
+"Configuración de tema
+colorscheme catppuccin " catppuccin-latte, catppuccin-frappe, catppuccin-macchiato, catppuccin-mocha.
+
+"Reinicia la ventana de init.vim
+nmap<F5> :source ~/.config/nvim/init.vim<CR>
+vmap<F5> :source ~/.config/nvim/init.vim<CR>
+
+"Definimos la tecla lider
+"let mapleader = " "
+
+"Para que las flechas de direccion dejen de funcionar en modo visualización
+noremap <up> <nop>
+noremap <down> <nop>
+noremap <left> <nop>
+noremap <right> <nop> 
+
+"NvimTree configuracion
+lua<< EOF
+require("nvim-tree").setup()
+EOF
+
+"Configuración de Fzf 
+nnoremap <C-p> :FZF<CR> 
+
+
+"Configuración de NvimTree
+noremap <C-n> :NvimTreeToggle<CR>
